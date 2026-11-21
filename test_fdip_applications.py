@@ -25,7 +25,7 @@ class TestFDIPApplications(unittest.TestCase):
     def test_bidisperse_fill_dimensions(self):
         """Verify bidisperse efficiency strictly exceeds single-size efficiency across 2D-4D."""
         for dim in (2, 3, 4):
-            fill = BidisperseContainerFill(dimension=dim, container_radius_ratio=10.0).estimate_fill()
+            fill = BidisperseContainerFill(dimension=dim, container_radius_ratio=20.0).estimate_fill()
             self.assertGreater(fill["secondary_spheres"], 0)
             self.assertGreater(fill["bidisperse_efficiency"], fill["single_size_efficiency"])
             self.assertGreater(fill["efficiency_gain_pct"], 0.0)
