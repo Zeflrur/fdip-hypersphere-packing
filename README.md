@@ -62,14 +62,18 @@ $$R_{\min}(d, \alpha) = \frac{c}{1 - \alpha^{1/d}}$$
 
 ```text
 fdip-hypersphere-packing/
-├── LICENSE                      # MIT License
-├── README.md                    # Documentation & equations
-├── requirements.txt             # Python dependencies (numpy, matplotlib)
-├── fdip_model.py                # Core FDIPModel class, CLI summary & plotting
-├── test_fdip_model.py           # Unit tests verifying constants & bounds
-├── fdip_analysis.png            # Two-panel preview plot
-├── fdip_model_equations.tex     # LaTeX reference source
-└── fdip_model_equations.pdf     # Compiled PDF reference sheet
+├── .github/workflows/
+│   └── tests.yml               # Automated CI unit test workflow (Python 3.10–3.12)
+├── LICENSE                     # MIT License
+├── README.md                   # Documentation, equations & quickstart
+├── requirements.txt            # Python dependencies (numpy, matplotlib)
+├── fdip_model.py               # Core FDIPModel class, CLI summary & plotting
+├── fdip_applications.py        # Applied 4D QAM & bidisperse container fill models
+├── test_fdip_model.py          # Core model unit tests
+├── test_fdip_applications.py   # Applied engineering models unit tests
+├── fdip_analysis.png           # Two-panel preview plot
+├── fdip_model_equations.tex    # LaTeX reference source
+└── fdip_model_equations.pdf    # Compiled PDF reference sheet
 ```
 
 
@@ -101,7 +105,30 @@ print(f"4D Sphere Count (R=10, Base):       {model_4d.sphere_count(R=10, generat
 ```
 
 ---
+### Run Applied Engineering Models (4D QAM & Bidisperse Fill)
 
+```bash
+python fdip_applications.py
+```
+
+```python
+from fdip_applications import Hierarchical4DQAM, BidisperseContainerFill
+
+# 1. Evaluate Hierarchical 4D QAM constellation capacity at peak power radius R = 6.0
+qam = Hierarchical4DQAM(peak_radius_ratio=6.0).summary()
+print(f"4D Total Symbols: {qam['total_symbols']} (+{qam['extra_bits_per_symbol']} bits/symbol)")
+print(f"4D Signal Volume Gain: +{qam['relative_volume_gain_pct']}%")
+
+# 2. Estimate finite-container bidisperse fill in 4D (R = 10.0)
+fill = BidisperseContainerFill(dimension=4, container_radius_ratio=10.0).estimate_fill()
+print(f"4D Fill Efficiency: {fill['single_size_efficiency']:.2%} -> {fill['bidisperse_efficiency']:.2%}")
+```
+
+### Run Unit Tests
+
+```bash
+python -m unittest discover -v
+```
 ## Applications
 
 * **Dual-Polarization 4D Modulation (QAM):** Designing hierarchical two-tier constellations in optical fiber and 5G/6G links by placing secondary symbols inside the 3 deep holes of the $D_4$ lattice ($+8.83\%$ signal volume with zero outer power increase).
