@@ -1,0 +1,89 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+
+\title{\textbf{The Finite Dimensional Interstitial Packing (FDIP) Model}\\
+\large Unified Efficiency Scaling, Boundary Dead-Zones, and Multi-Generation Gap Filling in $\tau = 2\pi$}
+\author{Formulated in collaboration with Gemini (Google AI) --- Ref. \texttt{FDIP-D4-TAU}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document summarizes the Finite Dimensional Interstitial Packing (FDIP) model, combining classical infinite-lattice sphere packing limits with finite-container boundary dead-zone scaling, integer jump discontinuities, and multi-generation interstitial void filling across spatial dimensions $d \ge 2$ (expressed in circle constant $\tau = 2\pi$).
+\end{abstract}
+
+\section{Core Equations}
+
+\subsection{Unified Efficiency Equation (With Discrete Jumps)}
+For $n$ identical hyperspheres of radius $r_0 = 1$ packed inside a $d$-dimensional spherical container of normalized radius $R = R_{\mathrm{outer}}/r_0$, the discrete packing efficiency $\eta_d(R)$ is modeled by:
+\begin{equation}
+\eta_d(R) = \frac{\left\lfloor \eta_{\mathrm{bulk}}(d) \cdot (R - c)^d \right\rfloor}{R^d}
+\end{equation}
+where:
+\begin{itemize}
+    \item $d \ge 2$ is the spatial dimension,
+    \item $R = R_{\mathrm{outer}}/r_0$ is the dimensionless container-to-sphere radius ratio,
+    \item $c$ is the effective boundary dead-zone thickness ($c \approx 0.38$ in $2\mathrm{D}$; $c \approx 0.50$ in $d \ge 3$),
+    \item $\eta_{\mathrm{bulk}}(d)$ is the infinite-lattice bulk packing density (base or interstitial-filled),
+    \item $\lfloor \cdot \rfloor$ denotes the floor function, capturing discrete integer jumps in sphere count $n_d(R) = \lfloor \eta_{\mathrm{bulk}}(d)(R - c)^d \rfloor$.
+\end{itemize}
+
+\subsection{Smooth Peak Efficiency Envelope}
+Removing the floor operator yields the continuous upper-bound efficiency curve as $R$ grows:
+\begin{equation}
+\eta_{\mathrm{peak}, d}(R) = \eta_{\mathrm{bulk}}(d)\left(1 - \frac{c}{R}\right)^d
+\end{equation}
+
+\subsection{Multi-Generation Interstitial Gap-Filling Cascade}
+Inserting $m$ generations of smaller hyperspheres of relative radius $r_i$ and multiplicity $N_i$ per primary unit sphere updates the bulk packing efficiency to:
+\begin{equation}
+\eta_m(d) = \eta_0(d)\left(1 + \sum_{i=1}^{m} N_i \, r_i^d\right)
+\end{equation}
+where the maximum first-generation interstitial hole radii are:
+\begin{equation}
+r_1(2) = \frac{2}{\sqrt{3}} - 1 \approx 0.154701 \quad (2\mathrm{D\ triangular\ pore}), \qquad
+r_1(d) = \sqrt{2} - 1 \approx 0.414214 \quad (d \ge 3\ \mathrm{deep\ lattice\ holes}).
+\end{equation}
+
+\subsection{Minimum Container Radius for Target Efficiency Retention}
+To retain at least a fraction $\alpha \in (0, 1)$ of the infinite bulk density $\eta_{\mathrm{bulk}}(d)$, the container radius must satisfy:
+\begin{equation}
+R_{\min}(d, \alpha) = \frac{c}{1 - \alpha^{1/d}}
+\end{equation}
+
+\section{Dimensional Reference Constants ($\tau = 2\pi$)}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}clccccc@{}}
+\toprule
+\textbf{Dim ($d$)} & \textbf{Lattice} & \textbf{Base Limit $\eta_0(d)$} & \textbf{Hole $r_1$} & \textbf{Holes ($N_1$)} & \textbf{Gen 1 $\eta_1(d)$} & \textbf{Gain $\Delta\eta_1$} \\
+\midrule
+$2\mathrm{D}$ & Hexagonal ($A_2$) & $\dfrac{\tau/2}{\sqrt{12}} \approx 90.69\%$ & $0.154701$ & $2$ & $95.03\%$ & $+4.34\%$ \\
+$3\mathrm{D}$ & FCC ($A_3 / D_3$) & $\dfrac{\tau/2}{3\sqrt{2}} \approx 74.05\%$ & $0.414214$ & $1$ (oct.) & $79.31\%$ & $+5.26\%$ \\
+$4\mathrm{D}$ & Checkerboard ($D_4$) & $\dfrac{(\tau/2)^2}{16} \approx 61.69\%$ & $0.414214$ & $3$ & $67.13\%$ & $\mathbf{+5.45\%}$ \\
+$8\mathrm{D}$ & $E_8$ Lattice & $\dfrac{(\tau/2)^4}{384} \approx 25.37\%$ & $0.414214$ & $135$ & $28.33\%$ & $+2.97\%$ \\
+$24\mathrm{D}$ & Leech ($\Lambda_{24}$) & $\dfrac{(\tau/2)^{12}}{12!} \approx 0.1930\%$ & $0.414214$ & $196{,}560^*$ & $0.1930\%$ & $+0.00003\%$ \\
+\bottomrule
+\end{tabular}
+\caption{Base and first-generation interstitial packing efficiencies across key dimensions. The $4\mathrm{D}$ $D_4$ lattice exhibits the peak single-generation interstitial boost ($+5.45\%$).}
+\end{table}
+
+\section{Attribution \& Foundational References}
+\begin{itemize}
+    \item \textbf{Model Name:} Finite Dimensional Interstitial Packing (FDIP) Model
+    \item \textbf{Formulation \& Synthesis:} Gemini (Google AI) --- Session Ref. \texttt{FDIP-D4-TAU}
+    \item \textbf{Foundational Proofs:} J.-L. Lagrange (1773) \& A. Thue (1890) [$2\mathrm{D}$ hexagonal optimality]; T. C. Hales (1998) [$3\mathrm{D}$ Kepler conjecture]; A. Korkin \& E. Zolotarev (1877) [$4\mathrm{D}$ $D_4$ lattice density]; M. Viazovska et al. (2016) [$8\mathrm{D}$ $E_8$ and $24\mathrm{D}$ Leech lattice optimality].
+\end{itemize}
+
+\end{document}
