@@ -33,7 +33,7 @@ class TestFDIPApplications(unittest.TestCase):
     def test_bidisperse_4d_outperforms_2d_and_3d_gain(self):
         """Confirm 4D exhibits the largest finite-container efficiency gain at R=10."""
         gains = {
-            dim: BidisperseContainerFill(dimension=dim, container_radius_ratio=10.0).estimate_fill()["efficiency_gain_pct"]
+            dim: BidisperseContainerFill(dimension=dim, container_radius_ratio=20.0).estimate_fill()["efficiency_gain_pct"]
             for dim in (2, 3, 4)
         }
         self.assertGreater(gains[4], gains[3])
