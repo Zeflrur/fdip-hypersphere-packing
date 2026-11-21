@@ -6,6 +6,8 @@
 
 An analytical and computational framework modeling **finite-container hypersphere packing efficiency** across spatial dimensions $d \ge 2$, unifying discrete integer packing jumps, curved boundary dead-zones, and multi-generation interstitial void filling in $\tau = 2\pi$.
 
+![FDIP Model Analysis](fdip_analysis.png)
+
 ---
 
 ## Overview
