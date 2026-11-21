@@ -56,6 +56,20 @@ $$R_{\min}(d, \alpha) = \frac{c}{1 - \alpha^{1/d}}$$
 | **24D** | Leech ($\Lambda_{24}$) | $\frac{(\tau/2)^{12}}{12!} \approx 0.1930\%$ | $0.414214$ | $196{,}560^*$ | $0.1930\%$ | $+0.00003\%$ |
 
 ---
+## Repository Structure
+
+```text
+fdip-hypersphere-packing/
+├── LICENSE                      # MIT License
+├── README.md                    # Documentation & equations
+├── requirements.txt             # Python dependencies (numpy, matplotlib)
+├── fdip_model.py                # Core FDIPModel class, CLI summary & plotting
+├── test_fdip_model.py           # Unit tests verifying constants & bounds
+├── fdip_analysis.png            # Two-panel preview plot
+├── fdip_model_equations.tex     # LaTeX reference source
+└── fdip_model_equations.pdf     # Compiled PDF reference sheet
+```
+
 
 ## Quickstart
 
