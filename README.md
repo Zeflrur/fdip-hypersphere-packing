@@ -1,6 +1,6 @@
 # Finite Dimensional Interstitial Packing (FDIP) Model
 
-[![Run FDIP Unit Tests](https://github.com)](https://github.com)
+[![Run FDIP Unit Tests](https://github.com/Zeflrur/fdip-hypersphere-packing/blob/main/.github/workflows/tests.yml/badge.svg)](https://github.com/Zeflrur/fdip-hypersphere-packing/blob/main/.github/workflows/tests.yml)
 
 [![Circle Constant](https://img.shields.io/badge/Circle%20Constant-%CF%84%20%3D%202%CF%80-blue.svg)](#)
 [![Dimensions](https://img.shields.io/badge/Dimensions-2D%20%E2%86%92%2024D-purple.svg)](#)
